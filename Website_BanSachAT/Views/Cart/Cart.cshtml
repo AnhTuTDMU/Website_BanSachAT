@@ -1,0 +1,70 @@
+﻿@using Website_BanSachAT.Models;
+@model  List<GioHang>
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<style>
+    td{
+        padding: 5px;
+    }
+</style>
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <h2 style="text-align: center;">THÔNG TIN GIỎ HÀNG</h2>
+    <table border="1">
+        <tr style="background-color: #b0cfb9; font-size: 15px; font-weight: bold; text-align: center; ">
+            <td>Mã Sách</td>
+            <td>Tên Sách</td>
+            <td>Ảnh Bìa</td>
+            <td>Số lượng</td>
+            <td>Đơn Giá</td>
+            <td>Thành Tiền</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="center">@item.iMasach</td>
+                <td style="padding: 7px;">@item.sTenSach</td>
+                <td><img src="~/Images/@item.sAnhBia" style="width: 100px;" /></td>
+                @using (Html.BeginForm("CapNhatGioHang", "Cart", new { iMaSach = item.iMasach }))
+                {
+                    <td align="center">
+                        <input type="number" min="1" name="txtSoLuong" value="@item.iSoLuong" style="background-color: #f4ff94" />
+                    </td>
+                    <td align="center">@string.Format("{0:#,##0,0}", @item.sDonGia)</td>
+                    <td align="center">@string.Format("{0:#,##0,0}", @item.dThanhTien)</td>
+                    <td>
+                        <a href="@Url.Action("ChiTietSach","Book", new { id = item.iMasach })">
+                            Chi tiết
+                        </a>
+                    </td>
+                    <td>@Html.ActionLink("Xóa", "XoaSPKhoiGioHang", new { @iMaSach = item.iMasach })</td>
+                    <td>
+                        <input type="submit" value="Cập nhật" />
+                    </td>
+                }
+            </tr>
+        }
+        <tr>
+            <td colspan="4" style="text-align: right; color: red; font-weight: bold; padding-right: 5px;">
+                Tổng số lượng: @string.Format("{0:#,##0}", ViewBag.TongSoLuong)
+            </td>
+            <td colspan="5" style="text-align: right; color: red; font-weight: bold; padding-right: 5px;">
+                Tổng Tiền: @string.Format("{0:#,##0,0}", ViewBag.TongTien) VNĐ
+            </td>
+        </tr>
+        <tr style="font-weight: bold; color:blue;text-align:right">
+            <td colspan="9">
+                @Html.ActionLink("Xóa Giỏ Hàng", "XoaGioHang")
+            </td>
+        </tr>
+        <tr style="font-weight: bold; color:blue;text-align:center  ">
+            <td colspan="9">
+                @Html.ActionLink("ĐẶT HÀNG", "DatHang", "Cart")
+            </td>
+        </tr>
+    </table>
+</div>

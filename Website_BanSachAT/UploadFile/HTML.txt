@@ -1,0 +1,119 @@
+HTML CSS
+
+Những thành phần thường gặp của wesbsite 
+
+(1) Header (đầu trang)
+(2) Navigation (điều hướng)
+(3) Banner(hình ảnh)
+(4) Breadcrumb
+(5) Sidebar (thanh đặt trên phải hoặc trái màn hình)
+(6) Slider (bất cứ nội dung gì như ảnh chữ, tự động trượt dc)
+(7) Content (nội dung chính)
+(8) Footer (chân trang)
+
+
+
+
+////////////////////////////  (1) ////////////////////////////
+
+width: 100px
+hight: 100px
+// nếu thêm padding thì width và hight sẽ thay đổi
+=> giữ đúng kích thước của  : box-sizing
+*****************************************************
+
+//////////////////////////// (2) ////////////////////////////
+
+background-image: linear-gradient(tạo độ (0),mau,mau)
+background-image: url(chèn link ảnh)
+
+(-)background-size : 100%
+(-)background-size : contain(lấy chiều ngang, hở khoảng trắng)
+(-)background-size : cover(lấy chiều dài,zoom mất ảnh)
+
+backgroud-repeat: no-repeat(không lặp lại hình ảnh)
+background-position: top center, (0 width, 0 hight)(canh giữa trên)// canh chỉnh hình ảnh
+*************************************************************************
+
+//////////////////////////// (3) ////////////////////////////
+
+**** Cú pháp "shorthand" cho background (viết ngắn gọn)
+ví dụ : background : url(image.png) center/contain no-repaet
+
+******** Position (4 thuộc đè lên giao diện) *******
+
+----	Position: Relative (vị trí tương đối)
+		top: 100px || left: 100px (chỉ dùng được khi có Position: Relative)
+
+---- 	Position: Absolute (vị trí tuyệt đối)
+
+là con bị phụ thuộc trực tiếp từ thẻ cha 
+nếu thẻ con phụ thuộc vào thẻ cha thì dùng absolute
+
+---- 	Position: Fixed 
+phụ thuộc vào kích thước của trình duyệt (khi lăn chuột thẻ dc gắn Position: Fixed sẽ đi theo)
+
+---- 	Position: Sticky ( ít hỗ trợ)
+Bám dính khi lăn chuột nó sẽ di chuyển đến lên top ngược vs fixed
+ví dụ top: 10px
+
+**********************************************************
+
+//////////////////////////// (4) ////////////////////////////
+Các cách căn giữa trong CSS
+
+***(cách 1)
+
+(-) text-align: center; (có kế thừa có thể dùng cho lớp cha để căn giữa tất cả)
+(-) line-height: 100px (căn giữa chiều cao cách 100px) (có kế thừa có thể dùng cho lớp cha để căn giữa tất cả)
+ 
+**(Cách 2) dùng display: flex
+
+align-items : center; (căn giữa chiều dài)
+justify-content: space -  between (canh điều để sát 2 mép)
+
+**(cách 3) dùng position
+
+-- lớp cha (position: relative)
+-- lớp con (position: absolute)
+top: 50% (chia đôi kích thước của lớp cha)
+transform: translate(-50%) ( chia đôi kích thước của lớp con)
+
+//////////////////////////// (5) ////////////////////////////
+Hiển thị ảnh dự phòng khi ảnh chính lỗi
+tải hình dự phòng lưu vào source code
+(cách 1)
+
+ví dụ : <img onerror = "this.src = "tên ảnh dự phòng dc lưu vào source code" src ="link ảnh chính"
+if(link ảnh gốc lỗi thì sẽ hiện ảnh dự phòng)
+
+(cách 2)
+
+ví dụ background-image: url('link ảnh chính', url('tên ảnh dự phòng dc lưu vào source code')
+
+** overflow : hiden ( khi đối tượng con chòi ra khỏi cha thì ẩn đi)
+
+********************************************
+********************************************
+********************************************
+ <!-- Hỗ trợ trình duyệt cũ -->
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+********************************************
+
+********************************************
+
+********************************************
+
+/* Pesponsive */
+
+ PC * min-width: 1024px từ px => em(1em = 16px) " 1024px =>  64em"
+
+ Talet * min-width: 740px and max-width: 1023px " 740px=> 46.25em , 1023px 63.9375em
+
+ Mobie * min-width: 739px " 739px => 46.1875em"
+
+********************************************
+ 

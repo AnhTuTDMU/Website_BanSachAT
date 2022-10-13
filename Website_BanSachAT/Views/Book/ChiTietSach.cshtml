@@ -1,0 +1,25 @@
+﻿@model Website_BanSachAT.Models.SACH
+
+@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div class="thumbnail">
+        <center><h2 style="color: red; font-size: 2rem; font-weight: bold;">@Model.TenSach</h2></center>
+        <img src="~/Images/@Model.AnhBia" alt="Boats at Phi Phi, Thailand">
+        <div class="caption" style="text-align:center">
+            <p>
+                @Html.Raw(@Model.MoTa.ToString().Replace("\n", "<br>"))
+            </p>
+
+            <h3>Ngày cập nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</h3>
+            <h3>Giá bán: <font style="color:blue;font-weight:bold">@Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ</font></h3>
+            <p>
+                <a href="@Url.Action("ThemGioHang","Cart",new { ms = Model.MaSach, url = Request.Url.ToString() })" class="btn btn-primary" role="button">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+Switch : motd người dùng
+Switch#: motd đặt quyền
+Switch#(config): motd config để cấu hình
+
+Vào # lệnh enable
+Switch# configure terminal
+Switch(config)#hostname S1: đổi tên switch
+S1(config)#banner motd "Day la SW1": tên lúc chưa đăng nhập
+***
+** Đặt mật khẩu cho user
+1. chế độ user : 
+- S1(config)#line console 0
+- S1(config-line)#password cisco : cisco là mật khẩu
+- S1(config-line)#login
+******** Ctrl + shifft + 6: dừng khi lệnh sai
+** Đặt mật khẩu cho Enable có 2 cách
+--**-- ưu tiên -***
+- S1(config) enable secret 12345
+
+- S1(config)#enable password cisco
+** Mã hóa mật khẩu
+- S1(config)service password-encryption 
+
+** Xem cấu hình tk,mk 
+lệnh: Show run
+
+** remote từ xa
+S1(config)#line vty 0 4 (router mở tối đa 5 đường)
+S1(config-line)#password ittdmu
+S1(config-line)#login
+
+cấu hình:
+S1>enable 
+S1#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#line vty 0 15
+S1(config-line)#password ittdmu
+S1(config-line)#login
+S1(config-line)#
+
+S1#Coppy running-config starup-config: lưu bộ nhớ trong ra bộ nhớ ngoài
+
+vào cổng ảo: S1(config)#interface vlan 1
+S1(config-if) #ip add 192..168.2.254 255.255.255.0
+S1(config-if) #no sh
+
+S1(config)#ip default gateway 192.168.2.1
+
+
+******************************************************************
+packet
+
+1. gói uncicast: không nhân bảng ra khi đi
+
+

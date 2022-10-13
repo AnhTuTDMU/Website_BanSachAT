@@ -1,0 +1,54 @@
+﻿@using Website_BanSachAT.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <h2 class="text-center">SÁCH MỚI</h2>
+    <hr>
+    <div class="row text-center">
+        @{
+            var i = 0;
+        }
+        @foreach (var sach in Model)
+        {
+
+            i++;
+            if (i % 3 == 0)
+            {
+                @:<div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 hidden-xs">
+                }
+                else
+                {
+                    @:<div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 ">
+                    }
+                    <div class="thumbnail ">
+                        <img src="~/Images/@sach.AnhBia" alt="Thumbnail Image 1" class="img-responsive img-rounded imgbook" style="height:300px;">
+                        <div class="caption">
+                            <h4 style="min-height: 70px;">
+                                <a href="@Url.Action("ChiTietSach", "Book", new {id = @sach.MaSach})"> @sach.TenSach</a>
+                            </h4>
+                            <p><a href="@Url.Action("ThemGioHang","Cart",new { ms = sach.MaSach, url = Request.Url.ToString() })" class="btn btn-primary" role="button"><span class="glyphicon glyphicon- shopping-cart" aria-hidden="true"></span> Add to Cart</a></p>
+                        </div>
+                    </div>
+                @:</div>
+            }
+    </div>
+    @*Tạo liên kết các trang*@
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+    <style>
+        .MenuTrang {
+            display: inline;
+            text-align: center;
+        }
+    </style>
+    </div>
+</div>
+    @section SachBanNhieu{
+        @Html.Action("SachBanNhieu", "Book");
+    }
