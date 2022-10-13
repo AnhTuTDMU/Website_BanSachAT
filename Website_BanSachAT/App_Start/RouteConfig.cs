@@ -17,6 +17,7 @@ namespace Website_BanSachAT
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                ,namespaces: new[] {"Website_BanSachAT.Controllers"}
             );
         }
     }

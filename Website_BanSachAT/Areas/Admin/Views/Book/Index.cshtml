@@ -64,7 +64,7 @@
                 <img src="~/Images/@item.AnhBia" style="width:50px;" />
             </td>
             <td>
-                @*Định dạng hiển thị*@
+             
                 @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
             </td>
             <td>
@@ -88,7 +88,7 @@
         </tr>
     }
 </table>
-@*Tạo iên kết phần trang*@
+
 Trang @(Model.PageCount < Model.PageNumber ? 0 :
 Model.PageNumber)/@Model.PageCount
 <div class="MenuTrang">
