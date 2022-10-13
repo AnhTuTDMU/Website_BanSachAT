@@ -19,14 +19,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 <h2 style="text-align:center;">QUẢN LÝ THÔNG TIN SÁCH</h2>
-<p>
+<p class="btn" style="background-color: #ffe9c9 ">
     @Html.ActionLink("Thêm mới", "Create")
 </p>
 <table class="table">
     <tr>
         <th style="text-align:center;width:140px">
             Tên sách
-            3
         </th>
         <th style="text-align:center;width:200px">
             Mô tả
@@ -80,11 +79,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
             </td>
-            4
+
             <td>
-                <a href="@Url.Action("Edit", new { id = item.MaSach })" class="btn btnwarning" role="button">Sửa</a>
-                <a href="@Url.Action("Details", new { id = item.MaSach })" class="btn btnprimary" role="button">Chi tiết</a>
-                <a href="@Url.Action("Delete", new { id = item.MaSach })" class="btn btndanger" role="button">Xóa</a>
+                <a href="@Url.Action("Edit", new { id = item.MaSach })" class="btn btn-warning" role="button">Sửa</a>
+                <a href="@Url.Action("Details", new { id = item.MaSach })" class="btn btn-primary" role="button">Chi tiết</a>
+                <a href="@Url.Action("Delete", new { id = item.MaSach })" class="btn btn-danger" role="button">Xóa</a>
             </td>
         </tr>
     }
