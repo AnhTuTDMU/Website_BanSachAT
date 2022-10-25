@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChuDeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -655,6 +656,8 @@
     <Content Include="Areas\Admin\Views\Book\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Book\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Book\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Book\SachTheoChuDe.cshtml" />
+    <Content Include="Areas\Admin\Views\ChuDe\Index.cshtml" />
     <None Include="Models\SachOnline.dbml.layout">
       <DependentUpon>SachOnline.dbml</DependentUpon>
     </None>
@@ -679,9 +682,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Shared\SliderPartial.cshtml" />

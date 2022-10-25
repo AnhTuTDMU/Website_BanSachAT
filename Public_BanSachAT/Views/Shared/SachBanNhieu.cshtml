@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Website_BanSachAT.Models.SACH>
+@helper  Truncate(string s, int length)
+{
+    if(s.Length < length)
+    {
+            @s
+    }
+    else
+    {
+        @s.Substring(0,length)<text>...</text>
+    }
+}
+    <div class="container">
+        <h2 class="text-center">SÁCH BÁN NHIỀU</h2>
+        <div class="row">
+            @{
+                var count = 0;
+            }
+            @foreach (var item in Model)
+            {
+                count++;
+                <div class="col-lg-6 col-md-6">
+                    <div class="media-object-default">
+                        <div class="media">
+                            <div class="media-left Sachbannhieu_img">
+                                <a href="#">
+                                    <img class="media-object imgsachbannhieu"
+                                         src="~/Images/@item.AnhBia" alt="placeholder image" style="max-height: 100px">
+                                </a>
+                                <div class="media-body Sachbannhieu_text">
+                                    <h4 class="media-heading">@item.TenSach</h4>
+                                    <p class="mota">@Truncate(item.MoTa,190)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <!-- row-->
+        <hr>
+    </div>
+}

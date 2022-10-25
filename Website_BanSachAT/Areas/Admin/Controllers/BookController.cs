@@ -19,6 +19,7 @@ namespace Website_BanSachAT.Areas.Admin.Controllers
             int PageSize = 7;
             return View(data.SACHes.ToList().OrderBy(n => n.MaSach).ToPagedList(iPageNum, PageSize));
         }
+
         [HttpGet]
         public ActionResult Create()
         {

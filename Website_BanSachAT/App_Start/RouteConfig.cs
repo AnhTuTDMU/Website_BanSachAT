@@ -16,8 +16,9 @@ namespace Website_BanSachAT
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-                ,namespaces: new[] {"Website_BanSachAT.Controllers"}
+                defaults: new { controller = "Book", action = "Index", id = UrlParameter.Optional }
+                , namespaces: new[] {"Website_BanSachAT.Controllers"}
+       
             );
         }
     }
