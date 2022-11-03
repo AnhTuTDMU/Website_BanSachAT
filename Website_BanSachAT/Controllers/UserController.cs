@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Website_BanSachAT.Models;
-
+using System.Security.Cryptography;
+using System.Text;
 namespace Website_BanSachAT.Controllers
 {
     public class UserController : Controller
@@ -55,7 +56,7 @@ namespace Website_BanSachAT.Controllers
             {
                 kh.HoTen = sHoten;
                 kh.TaiKhoan = sTenDn;
-                kh.MatKhau = sMatkhau;
+                kh.MatKhau = GetMD5(sMatkhau);
                 kh.Email = sEmail;
                 kh.DiaChi = sDiaChi;
                 kh.DienThoai = sDienThoai;
@@ -63,6 +64,7 @@ namespace Website_BanSachAT.Controllers
                 db.KHACHHANGs.InsertOnSubmit(kh);
                 db.SubmitChanges();
                 return RedirectToAction("DangNhap");
+            
             }
             return this.DangKy();
         }
@@ -83,7 +85,7 @@ namespace Website_BanSachAT.Controllers
             }
             else
             {
-                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(n => n.TaiKhoan == sTenDN && n.MatKhau == sMatKhau);
+                KHACHHANG kh = db.KHACHHANGs.SingleOrDefault(n => n.TaiKhoan == sTenDN && n.MatKhau == GetMD5(sMatKhau));
                 if (kh != null)
                 {
                     ViewBag.ThongBao = "Chúc mừng đăng nhập thành công";
@@ -110,6 +112,18 @@ namespace Website_BanSachAT.Controllers
             FormsAuthentication.SignOut();
             Session["TaiKhoan"] = null;
             return RedirectToAction("Index", "Book");
+        }
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromdata = Encoding.UTF8.GetBytes(str);
+            byte[] targetdata = md5.ComputeHash(fromdata);
+            string byte2string = null;
+            for(int i = 0; i < targetdata.Length; i++)
+            {
+                byte2string += targetdata[i].ToString("x2");
+            }
+            return byte2string;
         }
     }
 }

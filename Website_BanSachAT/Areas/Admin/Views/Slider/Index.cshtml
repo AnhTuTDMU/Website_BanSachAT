@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Website_BanSachAT.Models.Slide>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>    
+            @Html.DisplayNameFor(model => model.TieuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HienThi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiSlide)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TieuDe)
+        </td>
+        <td>
+            <img class="img-responsive" style="width: 70%;" src="~/Images/Slider/@item.Anh" alt="thumb">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HienThi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSlide)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaSlide }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaSlide })
+        </td>
+    </tr>
+}
+
+</table>

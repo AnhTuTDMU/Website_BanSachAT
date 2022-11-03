@@ -34,9 +34,39 @@ namespace Website_BanSachAT.Controllers
             var listSachBn = SachBanNhieu(6);
             return PartialView(listSachBn);
         }
+        [ChildActionOnly]
         public ActionResult NavPartial()
         {
-            return PartialView();
+            List<MENU> lst = new List<MENU>();
+            lst = data.MENUs.Where(m => m.ParentId == null).OrderBy(m => m.OrderNumber).ToList();
+            int[] a = new int[lst.Count()];
+            for(int i = 0; i < lst.Count; i++)
+            {
+                var l = data.MENUs.Where(m => m.ParentId == lst[i].Id);
+                a[i] = l.Count();
+            }
+            ViewBag.lst = a;
+            return PartialView(lst);
+        }
+        [ChildActionOnly]
+        public ActionResult LoadChildMenu(int parentId)
+        {
+            List<MENU> lst = new List<MENU>();
+            lst = data.MENUs.Where(m => m.ParentId == parentId).OrderBy(m => m.OrderNumber).ToList();
+            ViewBag.Count = lst.Count();
+            int[] a = new int[lst.Count()];
+            for (int i = 0; i < lst.Count; i++)
+            {
+                var l = data.MENUs.Where(m => m.ParentId == lst[i].Id);
+                a[i] = l.Count();
+            }
+            ViewBag.lst = a;
+            return PartialView("LoadChildMenu", lst);
+        }
+        public ActionResult TrangTin(string metatitle)
+        {
+            var tt = (from t in data.TRANGTINs where t.MetaTitle == metatitle select t).Single();
+            return View(tt);
         }
         public ActionResult TopicPartial()
         {
@@ -48,7 +78,8 @@ namespace Website_BanSachAT.Controllers
         }
         public ActionResult SliderPartial()
         {
-            return PartialView();
+            var list = from sl in data.Slides select sl;
+            return PartialView(list);
         }
         public ActionResult ChuDepartial()
         {

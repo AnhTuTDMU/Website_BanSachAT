@@ -1,8 +1,9 @@
-﻿@using Website_BanSachAT.Models
+﻿@model IEnumerable<Website_BanSachAT.Models.MENU>
+
+@using Website_BanSachAT.Models
 @{
     KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
 }
-
 <nav class="navbar navbar-inverse">
     <!--navbar-fixed-top-->
     <div class="container">
@@ -17,9 +18,26 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">TRANG CHỦ</a> </li>
-                <li class="active"><a href="#">GIỚI THIỆU</a> </li>
-                <li class="active"><a href="#">LIÊN HỆ</a> </li>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        if (ViewBag.lst[i] != 0)
+                        {
+                            <li class="dropdown">
+                                <a href="@item.MenuLink" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    @item.MenuName<span class="caret"></span>
+                                </a>
+                                @Html.Action("LoadChildMenu", "Book", new { parentId = item.Id })
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a href="~/@item.MenuLink">@item.MenuName</a></li>
+                        }
+                        i++;
+                    }
+                }
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -56,3 +74,23 @@
             }
         </div>
 </nav>
+<style>
+    .dropdown-submenu {
+        position: relative;
+    }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+</style>
+<script>
+    $(document).ready(function () {
+        $('..dropdown-submenu a.test').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>

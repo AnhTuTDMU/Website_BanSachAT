@@ -48,25 +48,24 @@
     </style>
 </head>
 <body>
-    @Html.Partial("_NavPartial", "Book")
-   
+    @Html.Action("NavPartial", "Book")
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                @Html.Partial("SliderPartial", "Book")
+                @Html.Action("SliderPartial", "Book")
 
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 @Html.Action("ChuDePartial", "Book")
                 @Html.Action("NhaXuatBan", "Book")
             </div>
-                <div>
-                    @RenderBody()
-                </div>
-
+            <div>
+                @RenderBody()
             </div>
-            @RenderSection("SachBanNhieu", required: false)
+
         </div>
+        @RenderSection("SachBanNhieu", required: false)
+    </div>
     @Html.Partial("_FooterPartial")
 </body>
 </html>

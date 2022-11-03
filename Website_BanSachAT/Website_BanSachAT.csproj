@@ -131,6 +131,10 @@
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChuDeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
+    <Compile Include="Areas\Admin\Controllers\String.cs" />
+    <Compile Include="Areas\Admin\Controllers\TrangTinController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\FileAndMailController.cs" />
@@ -603,6 +607,7 @@
     <Content Include="Images\Slider\04.jpg" />
     <Content Include="Images\Slider\05.jpg" />
     <Content Include="Images\Slider\06.jpg" />
+    <Content Include="Images\Slider\abstract-grunge-decorative-relief-navy-blue-stucco-wall-texture-wide-angle-rough-colored-background_1258-28311.jpg" />
     <Content Include="Images\TH004.jpg" />
     <Content Include="Images\TH005.jpg" />
     <Content Include="Images\TH006.jpg" />
@@ -658,6 +663,15 @@
     <Content Include="Areas\Admin\Views\Book\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Book\SachTheoChuDe.cshtml" />
     <Content Include="Areas\Admin\Views\ChuDe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangTin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangTin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangTin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TrangTin\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\ChildMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\ChildMenu1.cshtml" />
     <None Include="Models\SachOnline.dbml.layout">
       <DependentUpon>SachOnline.dbml</DependentUpon>
     </None>
@@ -684,8 +698,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
-    <Content Include="Views\Shared\SliderPartial.cshtml" />
-    <Content Include="Views\Shared\_NavPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Shared\SachBanNhieu.cshtml" />
@@ -701,6 +713,10 @@
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Cart\DatHang.cshtml" />
     <Content Include="Views\Cart\XacNhanDatHang.cshtml" />
+    <Content Include="Views\Book\LoadChildMenu.cshtml" />
+    <Content Include="Views\Book\NavPartial.cshtml" />
+    <Content Include="Views\Book\TrangTin.cshtml" />
+    <Content Include="Views\Book\SliderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
